@@ -85,8 +85,8 @@
   [logging-conf]
   (let [configurator (JoranConfigurator.)
         context      (LoggerFactory/getILoggerFactory)]
-    (.setContext configurator (LoggerFactory/getILoggerFactory))
-    (.reset context)
+    (.setContext configurator context)
+    (.shutdownAndReset context)
     (.doConfigure configurator logging-conf)))
 
 (defn configure-logging!
